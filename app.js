@@ -14,13 +14,21 @@ function fromEuroToDollar(Euros) {
 }
 
 function fromDollarToYen(Dollar) {
-  let DollarToYen = Dollar * oneEuroIs["JPY"];
-  return DollarToYen;
+  let DollarToEuro = Dollar / oneEuroIs["USD"];
+  let EuroToYen = DollarToEuro * oneEuroIs["JPY"];
+  return EuroToYen;
 }
 
 function fromYenToPound(Yen) {
-  let YenToPound = Yen / oneEuroIs["GBP"];
-  return YenToPound;
+  let YenToEuro = Yen / oneEuroIs["JPY"];
+  let EuroToPound = YenToEuro * oneEuroIs["GBP"];
+  return EuroToPound;
 }
 
-module.exports = { fromEuroToDollar, fromDollarToYen, fromYenToPound, sum };
+module.exports = {
+  fromEuroToDollar,
+  fromDollarToYen,
+  fromYenToPound,
+  sum,
+  oneEuroIs,
+};
